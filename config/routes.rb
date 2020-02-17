@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
    resources :monuments, only: [ :create, :show, :new] do
-     member do
+     collection do
       get :search
      end
    end
