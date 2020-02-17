@@ -6,3 +6,16 @@
   border-radius: 8px;
   background-color: white;
 }
+
+
+.row {
+    display: -webkit-box;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 21px;
+    margin: auto auto auto auto;
+    margin-bottom: 20px;
+}
