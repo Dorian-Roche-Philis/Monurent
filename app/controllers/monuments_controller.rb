@@ -10,7 +10,7 @@ end
 def create
   @monument = Monument.new(monument_params)
   @monument.user = current_user
-  if @space.save
+  if @monument.save
     redirect_to monument_path
   else
     render :new
@@ -26,7 +26,7 @@ end
 
 def update
   if @monument.update(monument_params)
-    redirect_to monument_path(@monument)
+    redirect_to monument_path(@mo)
   else
     render :edit
   end
