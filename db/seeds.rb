@@ -15,7 +15,6 @@ html_doc = Nokogiri::HTML(html_file)
 # create name and city
 
 html_doc.search('strong').each do |title|
-  p title.text
     arr = title.text.strip.split('. ')
     if arr[1] != nil
       array << arr[1]
