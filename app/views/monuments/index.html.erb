@@ -16,7 +16,7 @@
         <% @monuments.each do |monument| %>
         <div class="col-6" style="padding: 10px;">
           <div class="card-trip">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <%= cl_image_tag monument.photo.key, height: 300, width: 400, crop: :fill %>
               <div class="card-trip-infos">
                 <div>
                   <h2><%= link_to monument.name, monument_path(monument) %></h2>
@@ -34,5 +34,3 @@
     </div>
   </div>
 </div>
-
-
