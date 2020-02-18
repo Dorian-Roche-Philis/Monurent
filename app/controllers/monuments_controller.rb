@@ -4,7 +4,7 @@ class MonumentsController < ApplicationController
 end
 
 def new
-  @monument = Monument.new(monument_params)
+  @monument = Monument.new
   authorize @monument
 end
 
@@ -13,14 +13,13 @@ def create
   @monument.user = current_user
   authorize @monument
   if @monument.save
-    redirect_to monument_path
+    redirect_to monument_path(@monument)
   else
     render :new
   end
 end
 
 def show
-  @monument = Monument.find[params[:id]]
 end
 
 def edit
@@ -29,7 +28,7 @@ end
 
 def update
   if @monument.update(monument_params)
-    redirect_to monument_path(@mo)
+    redirect_to monument_path(@monument)
   else
     render :edit
   end
@@ -38,6 +37,8 @@ end
 def destroy
   authorize @monument
   @monument.destroy
+  redirect_to root_path
+  # redirect to dashboard
 end
 
 private
