@@ -10,3 +10,33 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-nav p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    margin: 9px;
+}
+
+.navbar {
+  color : #757575;
+  font-weight: 300;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    display:inline;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    margin-top: 5px;
+}
