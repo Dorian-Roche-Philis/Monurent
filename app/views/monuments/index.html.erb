@@ -7,13 +7,20 @@
 
 <div class="container">
     <div class="row">
+<% @monuments.each do |monument| %>
       <div class="card-trip col-md-12 col-lg-5 m-3" style="">
         <img src="https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
         <div class="card-trip-infos">
           <div>
-            <a>LE LOUVRE</a>
+            <%= monument.name %>
+            <%= monument.address %>
+            <%= monument.description %>
+            <%= monument.city %>
+            <%= monument.price  %>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   <hr>
+
