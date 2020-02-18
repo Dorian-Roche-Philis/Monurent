@@ -13,7 +13,7 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <% unless params[:controller] = "pages" %>
+    <% if params[:controller] != "pages" %>
     <%= render 'shared/footer' %>
     <% end %>
   </body>
