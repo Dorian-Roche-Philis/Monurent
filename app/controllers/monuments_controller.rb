@@ -5,11 +5,13 @@ end
 
 def new
   @monument = Monument.new(monument_params)
+  authorize @monument
 end
 
 def create
   @monument = Monument.new(monument_params)
   @monument.user = current_user
+  authorize @monument
   if @monument.save
     redirect_to monument_path
   else
@@ -22,6 +24,7 @@ def show
 end
 
 def edit
+  authorize @monument
 end
 
 def update
@@ -33,6 +36,7 @@ def update
 end
 
 def destroy
+  authorize @monument
   @monument.destroy
 end
 
