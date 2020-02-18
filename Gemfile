@@ -32,11 +32,8 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'
-<<<<<<< HEAD
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
-=======
 gem 'pundit'
->>>>>>> master
 
 group :development, :test do
   gem 'pry-byebug'
