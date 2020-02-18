@@ -19,13 +19,26 @@
 }
 
 .banner-index {
-  background-image: url('https://images.pexels.com/photos/739407/pexels-photo-739407.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
   background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.4));
+  background-image: url('https://images.pexels.com/photos/739407/pexels-photo-739407.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  text-align: center;
-  height: 65vh;
+  text-align: left;
+  height: 40vh;
   padding-top: 30vh;
-  margin-bottom: 60px;
+}
+
+.banner_index p {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 52px;
+  font-weight: bolder;
+  font-family: 'poppins';
+  margin-left: 50px;
+}
+
+.text-banner {
+  padding: 20px;
 }
