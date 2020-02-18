@@ -3,6 +3,14 @@ class MonumentsController < ApplicationController
   before_action :set_monument, only: [:show, :edit, :update, :destroy]
 end
 
+def index
+  if params[:query].present?
+    @monuments = Monument.where("name ILIKE ?", "%#{params[:query]}%")
+  else
+    @monuments = Monument.all
+  end
+end
+
 def new
   @monument = Monument.new
   authorize @monument
