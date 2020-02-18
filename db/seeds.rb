@@ -10,9 +10,11 @@ Monument.destroy_all
 # scrapping initialize
 url = "https://designlike.com/100-most-famous-landmarks-around-the-world/"
 array = []
+puts 'fetching website'
 html_file = open(url).read
 html_doc = Nokogiri::HTML(html_file)
 # create name and city
+
 
 html_doc.search('strong').each do |title|
     arr = title.text.strip.split('. ')
@@ -20,6 +22,7 @@ html_doc.search('strong').each do |title|
       array << arr[1]
     end
 end
+
 monuments = []
 array.each do |x|
   if x[1] != nil
@@ -53,16 +56,16 @@ image.delete_at(16)
  tab = [anne, ben, donald, vlad, grigri]
  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 count = 1
+
 monuments.each do |monument|
    mon = Monument.new(name: monument[0], city: monument[1], price: price.sample, description: description)
-   mon.photo.attach(io: image[count], filename: monument[0].slice!(0..3) + '.png', content_type: 'image/png')
+   mon.photo.attach(io: URI.open(image[count]), filename: "photo#{count}.png", content_type: 'image/png')
    count += 1
    if mon.city?
      mon.user = tab.sample
      mon.save!
   end
 end
-p Monument.all
 
 
    #array << title.text.strip.split(', ')
