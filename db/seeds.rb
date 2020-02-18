@@ -13,7 +13,6 @@ array = []
 puts 'fetching website'
 html_file = open(url).read
 html_doc = Nokogiri::HTML(html_file)
-# create name and city
 
 
 html_doc.search('strong').each do |title|
