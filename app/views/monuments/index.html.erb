@@ -1,2 +1,12 @@
 
 INDEX
+<% @monuments.each do |monument| %>
+
+  <%= monument.name %>
+  <%= monument.address %>
+  <%= monument.description %>
+  <%= monument.city %>
+  <%= monument.price  %>
+
+
+<% end %>
