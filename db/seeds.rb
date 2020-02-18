@@ -36,7 +36,7 @@ html_doc.search('.aligncenter').each do |title|
 image <<  title.attribute('src').value
 count += 1
 end
-
+p image
 image.delete_at(3)
 image.delete_at(5)
 image.delete_at(7)
@@ -54,9 +54,10 @@ image.delete_at(16)
  price = (50...500).to_a
  tab = [anne, ben, donald, vlad, grigri]
  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-count = 1
+count = 0
 
 monuments.each do |monument|
+  p monument
    mon = Monument.new(name: monument[0], city: monument[1], price: price.sample, description: description)
    mon.photo.attach(io: URI.open(image[count]), filename: "photo#{count}.png", content_type: 'image/png')
    count += 1
