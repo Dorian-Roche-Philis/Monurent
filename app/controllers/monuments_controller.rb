@@ -27,6 +27,7 @@ def edit
 end
 
 def update
+  authorize @monument
   if @monument.update(monument_params)
     redirect_to monument_path(@monument)
   else
