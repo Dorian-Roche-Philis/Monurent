@@ -7,23 +7,46 @@ require 'nokogiri'
 
 User.destroy_all
 Monument.destroy_all
+# scrapping initialize
 url = "https://designlike.com/100-most-famous-landmarks-around-the-world/"
 array = []
+puts 'fetching website'
 html_file = open(url).read
 html_doc = Nokogiri::HTML(html_file)
- html_doc.search('strong').each do |title|
-  arr = title.text.strip.split('. ')
-  if arr[1] != nil
-    array << arr[1]
-  end
-end
-monuments = []
- array.each do |x|
-  if x[1] != nil
-  monuments << x.split(" in ")
+# create name and city
+
+
+html_doc.search('strong').each do |title|
+    arr = title.text.strip.split('. ')
+    if arr[1] != nil
+      array << arr[1]
+    end
 end
 
- end
+monuments = []
+array.each do |x|
+  if x[1] != nil
+    monuments << x.split(" in ")
+  end
+end
+
+#create photo
+image =[]
+count = 1
+html_doc.search('.aligncenter').each do |title|
+image <<  title.attribute('src').value
+count += 1
+end
+
+image.delete_at(3)
+image.delete_at(5)
+image.delete_at(7)
+image.delete_at(8)
+image.delete_at(11)
+image.delete_at(18)
+image.delete_at(16)
+
+
   anne = User.create!(first_name: "Anne", last_name: "Hidalgo", email: "anne@paris.com", phone_number: "06 75 00 07 50", address: "Notre de dame 75000 Paris", password: "123456", password_confirmation: "123456")
   ben = User.create!(first_name: "Benjamin", last_name: "Netanyahu", email: "benjamin@tel-aviv.com", phone_number: "9726 61 00 061 99", address: "Tayelet, Hayarkon, Tel Aviv", password: "123457", password_confirmation: "123457")
   donald = User.create!(first_name: "Donald", last_name: "Trump", email: "donald@washington.com", phone_number: "01 23 45 67 89", address: "Trump Tower, 725 5th Ave, New York, NY 10022", password: "123458", password_confirmation: "123458")
@@ -32,13 +55,16 @@ end
  price = (50...500).to_a
  tab = [anne, ben, donald, vlad, grigri]
  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+count = 1
 
 monuments.each do |monument|
    mon = Monument.new(name: monument[0], city: monument[1], price: price.sample, description: description)
+   mon.photo.attach(io: URI.open(image[count]), filename: "photo#{count}.png", content_type: 'image/png')
+   count += 1
    if mon.city?
-   mon.user = tab.sample
-   mon.save!
-end
+     mon.user = tab.sample
+     mon.save!
+  end
 end
 
 

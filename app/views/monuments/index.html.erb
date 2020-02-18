@@ -5,22 +5,32 @@
   </div>
 </div>
 
-<div class="container">
-    <div class="row">
-<% @monuments.each do |monument| %>
-      <div class="card-trip col-md-12 col-lg-5 m-3" style="">
-        <img src="https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
-        <div class="card-trip-infos">
-          <div>
-            <%= monument.name %>
-            <%= monument.address %>
-            <%= monument.description %>
-            <%= monument.city %>
-            <%= monument.price  %>
-            <% end %>
-          </div>
+        <div class="container-title">
+          <h2>OUR FANTASTIC SPACES </h2>
         </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <div class="row">
+        <% @monuments.each do |monument| %>
+        <div class="col-6" style="padding: 10px;">
+          <div class="card-trip">
+            <%= cl_image_tag monument.photo.key, height: 300, width: 400, crop: :fill %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= link_to monument.name, monument_path(monument) %></h2>
+                  <p><%= monument.city %></p>
+                </div>
+                <h2 class="card-trip-pricing">$<%= monument.price  %>M</h2>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-  <hr>
-
+    <div class="col-4">
+      map
+    </div>
+  </div>
+</div>
