@@ -14,7 +14,6 @@ puts 'fetching website'
 html_file = open(url).read
 html_doc = Nokogiri::HTML(html_file)
 
-
 html_doc.search('strong').each do |title|
     arr = title.text.strip.split('. ')
     if arr[1] != nil
