@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-   resources :monuments, only: [ :create, :show, :new] do
+   resources :monuments, only: [:index, :create, :show, :new] do
      collection do
       get :search
      end
