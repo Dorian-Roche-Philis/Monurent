@@ -1,18 +1,17 @@
+<div class="container">
+  <div class="container-search title-form">
+    <div class="title-form">
+      <h2>FIND A MONUMENT, AND RENT IT!</h2>
+    </div>
+      <%= form_tag monuments_path, method: :get do %>
+      <%= text_field_tag :query,
+                        params[:query],
+                        class: "form-control title-form",
+                        placeholder: "Rome"
+    %>
+    <%= submit_tag "SEARCH", class: "btn btn-form title-form" %>
+  <% end %>
 
-
-
-
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h3 class="card-title">Find A Monument, and rent it!</h3>
-
-    <%= form_tag monuments_path, method: :get do %>
-    <%= text_field_tag :query,
-                      params[:query],
-                      class: "form-control",
-                      placeholder: "Find a monument"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
   </div>
 </div>
+
