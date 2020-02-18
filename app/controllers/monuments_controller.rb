@@ -1,5 +1,6 @@
 class MonumentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :search]
+
   before_action :set_monument, only: [:show, :edit, :update, :destroy]
 
   def index
