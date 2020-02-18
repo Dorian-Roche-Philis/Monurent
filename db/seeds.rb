@@ -11,7 +11,7 @@ url = "https://designlike.com/100-most-famous-landmarks-around-the-world/"
 array = []
 html_file = open(url).read
 html_doc = Nokogiri::HTML(html_file)
-html_doc.search('strong').each do |title|
+ html_doc.search('strong').each do |title|
   arr = title.text.strip.split('. ')
   if arr[1] != nil
     array << arr[1]
@@ -20,10 +20,11 @@ end
 monuments = []
  array.each do |x|
   if x[1] != nil
-    monuments << x.split(" in ")
-  end
- end
 
+  monuments << x.split(" in ")
+end
+
+ end
   anne = User.create!(first_name: "Anne", last_name: "Hidalgo", email: "anne@paris.com", phone_number: "06 75 00 07 50", address: "Notre de dame 75000 Paris", password: "123456", password_confirmation: "123456")
   ben = User.create!(first_name: "Benjamin", last_name: "Netanyahu", email: "benjamin@tel-aviv.com", phone_number: "9726 61 00 061 99", address: "Tayelet, Hayarkon, Tel Aviv", password: "123457", password_confirmation: "123457")
   donald = User.create!(first_name: "Donald", last_name: "Trump", email: "donald@washington.com", phone_number: "01 23 45 67 89", address: "Trump Tower, 725 5th Ave, New York, NY 10022", password: "123458", password_confirmation: "123458")
