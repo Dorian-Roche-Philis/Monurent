@@ -31,13 +31,13 @@ end
  grigri = User.create!(first_name: "Benjamin", last_name: "Griveaux", email: "grigri@film-maker.com", phone_number: "06 96 96 75 00", address: "Grand Pigalle Hotêl, 29 Rue Victor Massé 75009 Paris", password: "123450", password_confirmation: "123450")
  price = (50...500).to_a
  tab = [anne, ben, donald, vlad, grigri]
- p tab.sample
  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
 monuments.each do |monument|
-  if x[1] != ''
-   mon = Monument.create!(name: monument[0], city: monument[1], price: price.sample, description: description)
-   p mon
+   mon = Monument.new(name: monument[0], city: monument[1], price: price.sample, description: description)
+   if mon.city?
+   mon.user = tab.sample
+   mon.save!
 end
 end
 
