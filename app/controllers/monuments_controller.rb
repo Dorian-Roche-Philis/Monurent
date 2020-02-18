@@ -5,7 +5,7 @@ class MonumentsController < ApplicationController
 
   def index
     if params[:query].present?
-      @monuments = policy_scope(Monument).where("name ILIKE ?", "%#{params[:query]}%")
+      @monuments = policy_scope(Monument).where("city ILIKE ?", "%#{params[:query]}%")
     else
       @monuments = policy_scope(Monument).all
     end
