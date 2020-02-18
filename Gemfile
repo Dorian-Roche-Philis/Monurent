@@ -32,8 +32,11 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'
+# Bundle for read html, xml,and other
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'pundit'
+gem 'cloudinary', '~> 1.12.0'
+#cloudinary services
 
 group :development, :test do
   gem 'pry-byebug'

@@ -1,2 +1,38 @@
+<div class="banner-index">
+  <div>
+    <h1>WHAT WE FOUND FOR YOU</h1>
+    <p>Find inspiration for your events.</p>
+  </div>
+</div>
 
-INDEX
+        <div class="container-title">
+          <h2>OUR FANTASTIC SPACES </h2>
+        </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <div class="row">
+        <% @monuments.each do |monument| %>
+        <div class="col-6" style="padding: 10px;">
+          <div class="card-trip">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= link_to monument.name, monument_path(monument) %></h2>
+                  <p><%= monument.city %></p>
+                </div>
+                <h2 class="card-trip-pricing">$<%= monument.price  %>M</h2>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-4">
+      map
+    </div>
+  </div>
+</div>
+
+
