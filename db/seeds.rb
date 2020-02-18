@@ -55,7 +55,7 @@ image.delete_at(16)
 count = 1
 monuments.each do |monument|
    mon = Monument.new(name: monument[0], city: monument[1], price: price.sample, description: description)
-   monument.photo.attach(io: image[count], filename: monument[0].join + '.png', content_type: 'image/png')
+   mon.photo.attach(io: image[count], filename: monument[0].slice!(0..3) + '.png', content_type: 'image/png')
    count += 1
    if mon.city?
      mon.user = tab.sample
