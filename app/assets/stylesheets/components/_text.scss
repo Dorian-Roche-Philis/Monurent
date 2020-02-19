@@ -8,9 +8,9 @@ h2 {
 }
 
 h1 {
-  font-weight: 500;
+  font-weight: 800;
   font-size: 60px;
-  font-family: 'Oswald';
+  font-family: 'poppins';
 }
 
 .container-title {
@@ -19,4 +19,12 @@ h1 {
   text-align: center;
 }
 
+p {
+  font-family: 'poppins';
+  font-weight: 200;
+  font-size: 20;
+}
 
+body {
+  background: #F2EEEE;
+}
