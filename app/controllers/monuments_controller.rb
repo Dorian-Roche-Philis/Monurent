@@ -28,6 +28,7 @@ class MonumentsController < ApplicationController
   end
 
   def show
+    authorize @monument
   end
 
   def edit
