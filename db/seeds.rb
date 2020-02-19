@@ -54,7 +54,7 @@ description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e
 count = 0
 
 monuments.each do |monument|
-   mon = Monument.new(name: monument[0], city: monument[1], price: price.sample, description: description)
+   mon = Monument.new(name: monument[0], city: monument[1], price: price.sample, description: description, address: "#{monument[0]}, #{monument[1]}")
    if image[count] != nil
     mon.photo.attach(io: URI.open(image[count]), filename: "photo#{count}.png", content_type: 'image/png')
    end
