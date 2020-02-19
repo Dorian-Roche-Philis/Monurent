@@ -1,6 +1,6 @@
 <div class="banner-index" style="background-image: url('https://images.pexels.com/photos/1805895/pexels-photo-1805895.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
   <div style="margin: -50px; margin-left: 60px;">
-    <h1>WHAT WE FOUND FOR YOU, <%= current_user.first_name %></h1>
+    <h1>WHAT WE FOUND FOR YOU</h1>
     <p>Find inspiration for your events.</p>
   </div>
 </div>
@@ -16,7 +16,9 @@
         <% @monuments.each do |monument| %>
         <div class="col-6" style="padding: 10px;">
           <div class="card-trip">
-            <%= cl_image_tag monument.photo.key, height: 300, width: 400, crop: :fill %>
+              <% if monument.photo.attached? %>
+                <%= cl_image_tag monument.photo.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
               <div class="card-trip-infos">
                 <div>
                   <h2><%= link_to monument.name, monument_path(monument) %></h2>
