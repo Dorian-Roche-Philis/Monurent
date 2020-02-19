@@ -1,0 +1,33 @@
+
+
+
+  <div class="container confirmation">
+    <div class="center">
+      <h2 style="padding-bottom: 30px; padding-top: 30px;">Your booking confirmation at <%= @monument.name %> ✅</h2>
+        <div class="center">
+          <%= cl_image_tag @monument.photo.key, height: 300, width: 400, crop: :fill %>
+        </div>
+        <div style="padding-bottom: 30px; padding-top: 30px;">
+          <p class="fas fa-map-marker-alt">   Where : <%= @monument.city %></p>
+          <p style="font-weight: 400;">Check-in : <%= @booking.start_date %></p>
+          <p style="font-weight: 400;">Check-out : <%= @booking.end_date %></p>
+          <p style="font-weight: 400;">Price : <%= @monument.price %>M/day</p>
+          <hr>
+          <p style="font-weight: 800;">Total price : $<%= @monument.price %>M</p>
+        </div>
+
+         <section class="portfolio-experiment">
+          <a href="/monuments">
+            <span class="text">MY BOOKINGS</span>
+            <span class="line -right"></span>
+            <span class="line -top"></span>
+            <span class="line -left"></span>
+            <span class="line -bottom"></span>
+          </a>
+        </section>
+
+    </div>
+
+  </div>
+
+

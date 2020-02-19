@@ -9,11 +9,11 @@ class BookingPolicy < ApplicationPolicy
     return true
   end
 
-  def new?
-    return true
+  def index?
+    true
   end
 
   def show?
-    return true
+    true
   end
 end

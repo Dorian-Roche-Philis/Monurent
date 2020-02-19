@@ -4,12 +4,14 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @monument = Monument.find(params[:monument_id])
     @user = current_user
+
     @booking.user = @user
     @booking.monument = @monument
     authorize @booking
   end
 
   def new
+
 
   end
 
