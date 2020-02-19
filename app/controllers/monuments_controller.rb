@@ -29,6 +29,8 @@ class MonumentsController < ApplicationController
 
   def show
     @booking = Booking.new
+    authorize @monument
+
   end
 
   def edit
