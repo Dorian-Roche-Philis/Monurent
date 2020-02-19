@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
 
   def new
 
-
+    session[:return_to] ||= request.referer
   end
 
   def create
@@ -25,6 +25,7 @@ class BookingsController < ApplicationController
     @booking.monument = @monument
     authorize @booking
     if @booking.save
+      redirect_to session.delete(:return_to)
 
       redirect_to monument_booking_path(@monument, @booking)
     else
