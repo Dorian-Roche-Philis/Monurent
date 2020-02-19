@@ -3,14 +3,14 @@ class BookingsController < ApplicationController
   def show
     @monument = Monument.find(params[:monument_id])
     @user = current_user
-    @booking.user = @user
-    @booking.monument = @monument
+    @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def new
 
     @booking = Booking.new
-    raise
+
   end
 
   def create

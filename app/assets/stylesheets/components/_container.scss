@@ -14,9 +14,10 @@
   padding: 21px;
   border: solid #b8b8ba 1px;
   width: 350px;
-  margin: auto;
+  margin-left: 100px;
+  /* margin: auto; */
   border-radius: 8px;
-  background-color: #ffffffad;
+  background-color: white;
   padding: 20px;
 }
 
@@ -44,6 +45,17 @@
   box-shadow: 7px 8px 20px 4px #e4dede;
   margin-bottom: 40px;
   border-radius: 6px;
+}
+
+.confirmation {
+  padding-bottom: 30px;
+  border: solid 1px #EBE5E4;
+  background: white;
+  box-shadow: 7px 8px 20px 4px #e4dede;
+  border-radius: 6px;
+  width: 600px;
+  margin-bottom: 60px;
+  margin-top: 60px;
 }
 
 
