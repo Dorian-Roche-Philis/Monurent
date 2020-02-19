@@ -34,6 +34,7 @@ html_doc.search('.aligncenter').each do |title|
   image <<  title.attribute('src').value
 end
 image.delete_at(3)
+image.delete_at(4)
 image.delete_at(5)
 image.delete_at(7)
 image.delete_at(8)
