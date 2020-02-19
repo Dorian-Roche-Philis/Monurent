@@ -37,6 +37,8 @@ gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'pundit'
 gem 'cloudinary', '~> 1.12.0'
 #cloudinary services
+gem 'geocoder'
+# geocoder services
 
 group :development, :test do
   gem 'pry-byebug'

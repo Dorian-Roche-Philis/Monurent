@@ -5,9 +5,19 @@ class MonumentsController < ApplicationController
 
   def index
     if params[:query].present?
-      @monuments = policy_scope(Monument).where("city ILIKE ?", "%#{params[:query]}%")
+      @monuments = policy_scope(Monument).where("city ILIKE ?", "%#{params[:query]}%").geocoded
     else
-      @monuments = policy_scope(Monument).all
+      @monuments = policy_scope(Monument).all.geocoded
+    end
+    # @flats = Flat.geocoded # returns flats with coordinates
+
+    @markers = @monuments.map do |monument|
+      {
+        lat: monument.latitude,
+        lng: monument.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { monument: monument }),
+        image_url: helpers.asset_url('logo.png')
+      }
     end
   end
 
