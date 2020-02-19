@@ -33,9 +33,20 @@
 <div class="container details-monument">
   <div class="row">
     <div class="col-12">
+
         <h2>Your dates:</h2>
+        <%= simple_form_for([@monument, @booking]) do |f| %>
+          <%= f.input :start_date, label: 'From', class: "form-control mr-3" %>
+          <%= f.input :end_date, label: 'To', class: "form-control mr-3" %>
+          <% if policy(Booking).create? %>
+            <%= f.submit 'BOOK NOW', class: 'btn btn-primary' %>
+
+          <% end %>
+
+        <% end %>
+
         <form>
-          <div class="form-inline my-3">
+
             <label class="mr-3" for="booking_start_date">Start date</label>
             <input value="2020-02-18" id="start-date-booking" class="form-control mr-3" type="date" name="booking[start_date]" />
             <label class="mr-3" for="booking_start_date">End date</label>

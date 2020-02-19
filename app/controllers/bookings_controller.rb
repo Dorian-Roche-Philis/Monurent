@@ -1,33 +1,36 @@
 class BookingsController < ApplicationController
 
   def show
-    @monument = Monument.find(params[:monument_id])
-    @user = current_user
     @booking = Booking.find(params[:id])
-    authorize @booking
-  end
-
-  def new
-
-    @booking = Booking.new
-
-  end
-
-  def create
-
-    @booking = Booking.new(booking_params)
-
     @monument = Monument.find(params[:monument_id])
     @user = current_user
 
     @booking.user = @user
     @booking.monument = @monument
+    authorize @booking
+  end
 
+  def new
+
+
+  end
+
+  def create
+    @booking = Booking.new(booking_params)
+
+
+    @monument = Monument.find(params[:monument_id])
+    @user = current_user
+    @booking.user = @user
+    @booking.monument = @monument
+    authorize @booking
     if @booking.save
-      redirect_to booking_path(@booking)
+
+      redirect_to monument_booking_path(@monument, @booking)
     else
-      render :new
+      render 'monuments/show'
     end
+
 
 
   end
@@ -35,7 +38,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :total_price, :monument_id)
+    params.require(:booking).permit(:start_date, :end_date, :total_price, :monument, :user)
   end
 
 end
