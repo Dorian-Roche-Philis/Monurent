@@ -1,8 +1,64 @@
-<div class="container-title">
-  <h1><%= @monument.name.upcase %></h1>
+<div class="banner-index" style="background-image: url('https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
 </div>
 
-<div>
-  <i class="fas fa-map-marker-alt"></i>
+<div class="container">
 
+  <div class="center title-form">
+    <h1><%= @monument.name.upcase %></h1>
+  </div>
+<hr>
+<div class="justify-content">
+  <div class="d-flex flex-row bd-highlight mb-3">
+    <div style="margin-right: 60px"><%= cl_image_tag @monument.photo.key, height: 300, width: 400, crop: :fill %></div>
+    <p><%= @monument.description %></p>
+  </div>
 </div>
+
+
+<div class="container details-monument">
+  <div class="row">
+    <div class="col-12">
+      <h2><%= @monument.name.capitalize %> Information :</h2>
+      <p class="fas fa-map-marker-alt">   Where : <%= @monument.city %></p>
+      <p>Price : <%= @monument.price %>M/day</p>
+      <div class="center">
+        <a href="" class="btn btn-form">CHECK REVIEWS</a>
+        <a href="" class="btn btn-form">ADD REVIEW</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container details-monument">
+  <div class="row">
+    <div class="col-12">
+        <h2>Your dates:</h2>
+        <form>
+          <div class="form-inline my-3">
+            <label class="mr-3" for="booking_start_date">Start date</label>
+            <input value="2020-02-18" id="start-date-booking" class="form-control mr-3" type="date" name="booking[start_date]" />
+            <label class="mr-3" for="booking_start_date">End date</label>
+            <input value="2020-02-18" id="start-date-booking" class="form-control mr-3" type="date" name="booking[end_date]" />
+            <label class="mr-3" for="booking_number_of_nights">Number of days</label>
+            <input placeholder="Nb of nights" min="0" class="form-control mr-3" type="number" name="booking[nb_of_nights]" id="booking_nb_of_nights" />
+            <input value="3" type="hidden" name="booking[island_id]" id="booking_island_id" />
+            <label class="mr-3" for="booking_total_price">Total price</label>
+            <input id="total-price" readonly="readonly" value="0" class="form-control mr-3" type="text" name="booking[total_price]" />
+          </div>
+        </form>
+    </div>
+  </div>
+  <section class="portfolio-experiment title-form">
+    <a href="/monuments">
+      <span class="text">BOOK NOW</span>
+      <span class="line -right"></span>
+      <span class="line -top"></span>
+      <span class="line -left"></span>
+      <span class="line -bottom"></span>
+    </a>
+  </section>
+</div>
+</div>
+
+
