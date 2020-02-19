@@ -34,7 +34,7 @@ html_doc.search('.aligncenter').each do |title|
   image <<  title.attribute('src').value
 end
 image.delete_at(3)
-image.delete_at(4)
+imagege.delete_at(4)
 image.delete_at(5)
 image.delete_at(7)
 image.delete_at(8)
@@ -55,8 +55,11 @@ count = 0
 
 monuments.each do |monument|
    mon = Monument.new(name: monument[0], city: monument[1], price: price.sample, description: description)
-   mon.photo.attach(io: URI.open(image[count]), filename: "photo#{count}.png", content_type: 'image/png')
+   if image[count] != nil
+    mon.photo.attach(io: URI.open(image[count]), filename: "photo#{count}.png", content_type: 'image/png')
+   end
    count += 1
+
    if mon.city?
      mon.user = tab.sample
      mon.save!
