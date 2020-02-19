@@ -30,7 +30,7 @@ class MonumentsController < ApplicationController
   def show
     @booking = Booking.new
     authorize @monument
-
+    authorize @booking
   end
 
   def edit
