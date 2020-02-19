@@ -15,7 +15,7 @@
 </p>
           <p style="font-weight: 400;">Price : <%= @monument.price %>M/day</p>
           <hr>
-          <p style="font-weight: 800;">Total price : $<%= @monument.price %>M</p>
+          <p style="font-weight: 800;">Total price : $<%= @monument.price * count_days(@booking.end_date, @booking.start_date) %>M</p>
         </div>
 
          <section class="portfolio-experiment">
