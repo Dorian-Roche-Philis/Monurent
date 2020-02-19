@@ -14,8 +14,9 @@ class MonumentsController < ApplicationController
     @markers = @monuments.map do |monument|
       {
         lat: monument.latitude,
-        lng: monument.longitude
-        #infoWindow: render_to_string(partial: "info_window", locals: { flat: monument })
+        lng: monument.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { monument: monument }),
+        image_url: helpers.asset_url('logo.png')
       }
     end
   end
