@@ -5,8 +5,9 @@
 require 'open-uri'
 require 'nokogiri'
 
-User.destroy_all
+Booking.destroy_all
 Monument.destroy_all
+User.destroy_all
 # scrapping initialize
 url = "https://designlike.com/100-most-famous-landmarks-around-the-world/"
 array = []
