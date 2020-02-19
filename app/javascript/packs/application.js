@@ -20,6 +20,14 @@ require("channels")
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
-// ----------------------------------------------------
+// // ----------------------------------------------------
 
 import "bootstrap";
+
+import { loadDynamicBannerText } from '../components/banner';
+document.addEventListener('turbolinks:load', () => {
+  // Call your JS functions here
+  // [...]
+  loadDynamicBannerText();
+});
+
