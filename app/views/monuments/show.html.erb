@@ -14,6 +14,8 @@
   </div>
 </div>
 
+<hr>
+
 
 <div class="container details-monument">
   <div class="row">
@@ -38,37 +40,15 @@
         <%= simple_form_for([@monument, @booking]) do |f| %>
           <%= f.input :start_date, label: 'From', class: "form-control mr-3" %>
           <%= f.input :end_date, label: 'To', class: "form-control mr-3" %>
+          <hr>
+           <p class="center" style="font-weight: 800;">Total price : $<%= @monument.price %>M</p>
+           <hr>
           <% if policy(Booking).create? %>
-            <%= f.submit 'BOOK NOW', class: 'btn btn-primary' %>
-
+            <div class="center"><%= f.submit 'BOOK NOW', class: 'btn btn-form' %></div>
           <% end %>
-
         <% end %>
-
-        <form>
-
-            <label class="mr-3" for="booking_start_date">Start date</label>
-            <input value="2020-02-18" id="start-date-booking" class="form-control mr-3" type="date" name="booking[start_date]" />
-            <label class="mr-3" for="booking_start_date">End date</label>
-            <input value="2020-02-18" id="start-date-booking" class="form-control mr-3" type="date" name="booking[end_date]" />
-            <label class="mr-3" for="booking_number_of_nights">Number of days</label>
-            <input placeholder="Nb of nights" min="0" class="form-control mr-3" type="number" name="booking[nb_of_nights]" id="booking_nb_of_nights" />
-            <input value="3" type="hidden" name="booking[island_id]" id="booking_island_id" />
-            <label class="mr-3" for="booking_total_price">Total price</label>
-            <input id="total-price" readonly="readonly" value="0" class="form-control mr-3" type="text" name="booking[total_price]" />
-          </div>
-        </form>
     </div>
   </div>
-  <section class="portfolio-experiment title-form">
-    <a href="/monuments">
-      <span class="text">BOOK NOW</span>
-      <span class="line -right"></span>
-      <span class="line -top"></span>
-      <span class="line -left"></span>
-      <span class="line -bottom"></span>
-    </a>
-  </section>
 </div>
 </div>
 
