@@ -4,6 +4,7 @@ class MonumentsController < ApplicationController
   before_action :set_monument, only: [:show, :edit, :update, :destroy]
 
   def index
+
     if params[:query].present?
       sql_query = "city ILIKE :query OR name ILIKE :query"
       @monuments = policy_scope(Monument).where(sql_query, query: "%#{params[:query]}%").geocoded
@@ -34,7 +35,7 @@ class MonumentsController < ApplicationController
     @monument.user = current_user
     authorize @monument
     if @monument.save
-      redirect_to monument_path(@monument)
+      redirect_to dashboard_path
     else
       render :new
     end
