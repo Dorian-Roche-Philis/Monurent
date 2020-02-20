@@ -16,8 +16,10 @@
         <% @monuments.each do |monument| %>
         <div class="col-6" style="padding: 10px;">
           <div class="card-trip">
-              <% if monument.photo.attached? %>
-                <%= cl_image_tag monument.photo.key, height: 300, width: 400, crop: :fill %>
+              <% if monument.photos.attached? %>
+              <% monument.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
               <% end %>
               <div class="card-trip-infos">
                 <div>
