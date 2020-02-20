@@ -39,7 +39,7 @@ gem 'cloudinary', '~> 1.12.0'
 #cloudinary services
 gem 'geocoder'
 # geocoder services
-gem 'searchkick', '~> 3.0'
+# gem 'searchkick', '~> 3.0'
 # search bar
 
 group :development, :test do
