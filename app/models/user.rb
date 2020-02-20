@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one_attached :photo
   has_many :monuments, dependent: :destroy
-
+  has_many :reviews, dependent: :destroy
   has_many :bookings
 
   validates :first_name, presence: true
