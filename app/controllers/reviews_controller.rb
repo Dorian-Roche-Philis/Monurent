@@ -3,13 +3,12 @@ class ReviewsController < ApplicationController
   def new
     @monument = Monument.find(params[:monument_id])
     @review = Review.new
-    @review.monument_id = @monument
+    @review.monument = @monument
     authorize @review
   end
 
   def create
     @review = Review.new(review_params)
-
 
     @monument = Monument.find(params[:monument_id])
     @user = current_user
@@ -25,6 +24,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -36,6 +36,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:user, :text, :rating, :monument)
+    params.require(:review).permit(:user, :content, :rating, :monument)
   end
 end

@@ -27,8 +27,23 @@
       <h2><%= @monument.name.capitalize %> Information :</h2>
       <p class="fas fa-map-marker-alt">   Where : <%= @monument.city %></p>
       <p>Price : <%= @monument.price %>M/day</p>
+      <% if @monument.reviews %>
+          <div class="reviews">
+          <% @monument.reviews.each do |review| %>
+
+            <p><%= review.rating %></p>
+            <p>By: <%= review.user.first_name %> <%= review.user.last_name %></p>
+            <p>"<%= review.content %>"</p>
+
+          <% end %>
+  </div>
+        <% end %>
+
+
+
       <div class="center">
-        <a href="" class="btn btn-form">CHECK REVIEWS</a>
+
+
         <%= link_to("ADD REVIEW", new_monument_review_path(@monument) , class: "btn btn-form") %>
       </div>
     </div>
