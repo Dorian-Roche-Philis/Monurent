@@ -1,4 +1,24 @@
-<h1>My bookings</h1>
-<% @bookings.each do |booking| %>
-<%= booking.start_date %>
-<% end %>
+<div class="container-title">
+  <h1>YOUR BOOKINGS</h1>
+</div>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+        <% @bookings.each do |booking| %>
+        <div class="col-6" style="padding: 10px;">
+          <div class="card-trip">
+              <%= cl_image_tag booking.monument.photo.key, height: 300, width: 400, crop: :fill %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= link_to booking.monument.name %></h2>
+                  <p><%= booking.start_date %></p>
+                  <p><%= booking.end_date %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</div>
