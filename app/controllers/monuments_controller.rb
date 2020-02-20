@@ -23,6 +23,8 @@ class MonumentsController < ApplicationController
 
   def new
     @monument = Monument.new
+    @monument.user = current_user
+
     authorize @monument
   end
 
