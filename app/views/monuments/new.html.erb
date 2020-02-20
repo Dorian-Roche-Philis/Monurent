@@ -1,0 +1,19 @@
+<div class="container details-monument">
+  <div class="row">
+    <div class="col-12">
+      <h2>Add your monument</h2>
+
+        <%= simple_form_for(@monument) do |f| %>
+          <%= f.input :name, class: "form-control mr-3" %>
+          <%= f.input :address, class: "form-control mr-3" %>
+          <%= f.input :description, class: "form-control mr-3" %>
+          <%= f.input :city, class: "form-control mr-3" %>
+          <%= f.input :price, class: "form-control mr-3" %>
+          <% if policy(Monument).create? %>
+            <div class="center"><%= f.submit 'Add monument', class: 'btn btn-form' %></div>
+          <% end %>
+
+        <% end %>
+    </div>
+  </div>
+</div>
