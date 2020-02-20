@@ -2,22 +2,18 @@
   <h1>YOUR BOOKINGS</h1>
 </div>
 
-   <section class="portfolio-experiment">
-    <a href="/monuments/new">
-      <span class="text">WANT TO BE A HOST?</span>
-      <span class="line -right"></span>
-      <span class="line -top"></span>
-      <span class="line -left"></span>
-      <span class="line -bottom"></span>
-    </a>
-  </section>
 
-<hr>
-<div class="container">
-  <div class="row">
-    <div class="col-8">
+<ul class="nav nav-tabs" style="text-decoration: none;">
+  <li class="active"><a data-toggle="tab" href="#bookings">YOUR BOOKINGS</a></li>
+  <li><a data-toggle="tab" href="#monument">MY MONUMENTS</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="bookings" class="tab-pane active">
+  <div class="container">
+    <div class="row">
         <% @bookings.each do |booking| %>
-        <div class="col-6" style="padding: 10px;">
+        <div class="col-4" style="padding: 10px;">
           <div class="card-trip">
               <%= cl_image_tag booking.monument.photo.key, height: 300, width: 400, crop: :fill %>
               <div class="card-trip-infos">
@@ -32,4 +28,16 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div id="monument" class="tab-pane">
+    <section class="portfolio-experiment" style="margin-bottom: 35px;">
+      <a href="/monuments/new">
+        <span class="text">WANT TO BE A HOST?</span>
+        <span class="line -right"></span>
+        <span class="line -top"></span>
+        <span class="line -left"></span>
+        <span class="line -bottom"></span>
+      </a>
+    </section>
+  </div>
 </div>
