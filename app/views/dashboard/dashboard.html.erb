@@ -19,7 +19,11 @@
         <% @bookings.each do |booking| %>
         <div class="col-6" style="padding: 10px;">
           <div class="card-trip">
-              <%= cl_image_tag booking.monument.photo.key, height: 300, width: 400, crop: :fill %>
+              <% if booking.monument.photos.attached? %>
+        <% booking.monument.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% end %>
               <div class="card-trip-infos">
                 <div>
                   <h2><%= link_to booking.monument.name %></h2>
