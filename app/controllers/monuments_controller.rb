@@ -5,11 +5,12 @@ class MonumentsController < ApplicationController
 
   def index
     if params[:query].present?
-      @monuments = policy_scope(Monument).where("city ILIKE ?", "%#{params[:query]}%").geocoded
+      sql_query = "city ILIKE :query OR name ILIKE :query"
+      @monuments = policy_scope(Monument).where(sql_query, query: "%#{params[:query]}%").geocoded
     else
       @monuments = policy_scope(Monument).all.geocoded
     end
-    # @flats = Flat.geocoded # returns flats with coordinates
+    # @monuments = monument.geocoded # returns monument with coordinates
 
     @markers = @monuments.map do |monument|
       {
