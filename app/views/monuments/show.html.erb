@@ -10,7 +10,7 @@
 <div class="justify-content">
   <div class="d-flex flex-row bd-highlight mb-3">
     <div style="margin-right: 60px">
-      <% if @monument.photo.attached? %>
+      <% if @monument.photos.attached? %>
         <%= cl_image_tag @monument.photo.key, height: 300, width: 400, crop: :fill %>
         <% end %>
       </div>
