@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'pages#home'
+  get '/dashboard', to: 'dashboard#dashboard'
 
    resources :monuments, only: [:index, :create, :show, :new] do
      collection do
