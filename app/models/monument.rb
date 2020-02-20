@@ -8,4 +8,5 @@ class Monument < ApplicationRecord
   validates :description, presence: true
   validates :city, presence: true
   validates :name, uniqueness: true
+  searchkick
 end
