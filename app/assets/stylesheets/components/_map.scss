@@ -1,5 +1,6 @@
 .mapboxgl-popup {
   max-width: 200px;
+  border-radius: 8px;
 }
 
 .mapboxgl-popup-content {
@@ -7,6 +8,7 @@
   font-family: 'Poppins';
 }
 #map {
+  border-radius: 8px;
   position: sticky;
   top : 0 ;
 }
