@@ -21,7 +21,10 @@
                   <%= cl_image_tag photo.key, height: 280, width: 350, :fetch_format=>:auto, crop: :scale %>
                 <% end %>
               <% end %>
-             <p class="py-3"><%= @monument.description %></p>
+
+            </div>
+             <p class= "font-weight-light font-italic mt-5"><%= @monument.description %><p>
+
           </div>
         </div>
 
