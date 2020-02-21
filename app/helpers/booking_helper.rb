@@ -4,4 +4,5 @@ module BookingHelper
     Integer(end_time - start_time)
   end
 
+
 end
