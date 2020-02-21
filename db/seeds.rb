@@ -6,6 +6,7 @@ require 'open-uri'
 require 'nokogiri'
 
 Booking.destroy_all
+Review.destroy_all
 Monument.destroy_all
 User.destroy_all
 # scrapping initialize
