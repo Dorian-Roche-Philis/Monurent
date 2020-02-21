@@ -18,7 +18,7 @@ class MonumentsController < ApplicationController
         lat: monument.latitude,
         lng: monument.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { monument: monument }),
-        image_url: helpers.asset_url('logo.png')
+        image_url: helpers.asset_url('pyramid (1).png')
       }
     end
   end
