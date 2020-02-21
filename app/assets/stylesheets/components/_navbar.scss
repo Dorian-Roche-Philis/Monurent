@@ -17,6 +17,14 @@
     font-size: 15px;
     font-weight: 300;
 }
+.nav-tabs li a{
+  opacity: .3
+}
+.nav-tabs li a.active {
+  opacity: 1
+
+}
+
 
 .navbar {
   color : #757575;
