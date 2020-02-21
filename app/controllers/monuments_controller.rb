@@ -43,8 +43,10 @@ class MonumentsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @review = Review.new
     authorize @monument
     authorize @booking
+    authorize @review
   end
 
   def edit
@@ -74,7 +76,7 @@ class MonumentsController < ApplicationController
   end
 
   def monument_params
-    params.require(:monument).permit(:user, :address, :name, :price, :description, :city, :photo)
+    params.require(:monument).permit(:user, :address, :name, :price, :description, :city, photos: [])
   end
 end
 
