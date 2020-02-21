@@ -1,4 +1,4 @@
-<div class="banner-index" style="background-image: url('https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
+<div class="banner-index" style="background-image: url('https://images.pexels.com/photos/2159549/pexels-photo-2159549.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
 </div>
 
 <div class="container">
@@ -18,11 +18,11 @@
             <div style="margin: 0px">
               <% if @monument.photos.attached? %>
                 <% @monument.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key, height: 280, width: 350, :fetch_format=>:auto, crop: :scale %>
+                  <%= cl_image_tag photo.key, height: 330, width: 390, :fetch_format=>:auto, crop: :scale %>
                 <% end %>
               <% end %>
             </div>
-             <p><%= @monument.description %></p>
+             <p style="font-size: 17px; margin-top: 30px; font-weight: 300; color: #6b6b6b;"><%= @monument.description %></p>
           </div>
         </div>
 
@@ -67,9 +67,19 @@
     <div class="row">
       <div class="col-12">
         <h2><%= @monument.name.capitalize %> Information :</h2>
-        <p class="fas fa-map-marker-alt">   Where : <%= @monument.city %></p>
-        <p>Price : <%= @monument.price %>M/day</p>
+        <div style="    display: flex;">
+          <p class="fas fa-map-marker-alt"></p>
+          <p style="margin-left: 10px;">Where : <%= @monument.city %></p>
+        </div>
+          <p>Price : <%= @monument.price %>M/day</p>
       </div>
+        <div style="display: flex; margin-left: 15px;">
+          <i class="fas fa-star" style="color: #ffc31e;"></i>
+          <i class="fas fa-star" style="color: #ffc31e;"></i>
+          <i class="fas fa-star" style="color: #ffc31e;"></i>
+          <i class="fas fa-star" style="color: #ffc31e;"></i>
+          <i class="far fa-star" style="color: #ffc31e;"></i>
+        </div>
     </div>
   </div>
 
@@ -82,7 +92,7 @@
           <%= f.input :content, class: "form-control mr-3" %>
 
           <% if policy(Review).create? %>
-            <div class="center"><%= f.submit 'Add review', class: 'btn btn-form' %></div>
+            <div class="center"><%= f.submit 'ADD REVIEW', class: 'btn btn-form' %></div>
         <% end %>
       <% end %>
     <% if @monument.reviews.blank? %>
