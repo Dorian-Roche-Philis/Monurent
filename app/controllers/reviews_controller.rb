@@ -1,12 +1,6 @@
 class ReviewsController < ApplicationController
 
-  def new
-    # @monument = Monument.find(params[:monument_id])
-    # @review = Review.new
-    # @review.monument = @monument
-    # @review.user = current_usert
-    # authorize @review
-  end
+
 
   def create
     @review = Review.new(review_params)
@@ -16,10 +10,9 @@ class ReviewsController < ApplicationController
     @review.monument = @monument
     authorize @review
     if @review.save
-
       redirect_to monument_path(@monument)
     else
-      render :new
+      render 'monument/show'
     end
   end
 

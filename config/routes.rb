@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'reviews/new'
-  get 'reviews/create'
-  get 'reviews/edit'
+
   devise_for :users
   root to: 'pages#home'
   get '/dashboard', to: 'dashboard#dashboard'
@@ -12,11 +10,12 @@ Rails.application.routes.draw do
       get :search
      end
    end
+
    resources :monuments, only: [:show] do
     resources :bookings, only: [:new, :create, :show]
+    resources :reviews, only: [:create, :update]
   end
-    resources :monuments, only: [:show] do
-    resources :reviews, only: [:new, :create, :edit, :update, :destroy]
-   end
+
+  resources :reviews, only: :destroy
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
