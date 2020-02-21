@@ -50,7 +50,7 @@
                 <% end %>
               <% end %>
               <div class="card-trip-infos">
-                <h2><%= link_to monument.name %></h2>
+                <h2><%= link_to monument.name, monument_path(monument) %></h2>
                 <p><%= monument.city %></p>
                 <p><%= monument.price %></p>
               </div>
