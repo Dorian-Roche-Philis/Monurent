@@ -13,20 +13,20 @@
     <div class="d-flex flex-row bd-highlight mb-3">
       <div class="row">
 
-        <div class="col-8">
-          <div class="row">
+        <div class="col-7">
+
             <div style="margin: 0px">
               <% if @monument.photos.attached? %>
                 <% @monument.photos.each do |photo| %>
                   <%= cl_image_tag photo.key, height: 280, width: 350, :fetch_format=>:auto, crop: :scale %>
                 <% end %>
               <% end %>
-            </div>
-             <p><%= @monument.description %></p>
+             <p class="py-3"><%= @monument.description %></p>
           </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-5">
+
           <div class="container details-monument">
 
             <div class="row">
@@ -78,7 +78,9 @@
 
       <h5>Write a review for <%= @monument.name %></h5>
         <%= simple_form_for([@monument, @review], remote: true) do |f| %>
-          <%= f.input :rating, collection: 1..5, class: "form-control mr-3" %>
+        <%= f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+  <%= b.radio_button + b.label {''} %>
+<% end %>
           <%= f.input :content, class: "form-control mr-3" %>
 
           <% if policy(Review).create? %>
@@ -116,7 +118,7 @@
             <div class="review-actions">
 
                <%= link_to review, method: :delete, remote: true, data: {confirm: "Delete review?"} do %>
-                  <i class="far fa-trash-alt">
+                  <i class="far fa-trash-alt"></i>
                 <% end  %>
 
 
