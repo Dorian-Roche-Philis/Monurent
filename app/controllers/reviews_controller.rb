@@ -1,18 +1,18 @@
 class ReviewsController < ApplicationController
 
   def new
-    @monument = Monument.find(params[:monument_id])
-    @review = Review.new
-    @review.monument = @monument
-    authorize @review
+    # @monument = Monument.find(params[:monument_id])
+    # @review = Review.new
+    # @review.monument = @monument
+    # @review.user = current_usert
+    # authorize @review
   end
 
   def create
     @review = Review.new(review_params)
 
     @monument = Monument.find(params[:monument_id])
-    @user = current_user
-    @review.user = @user
+    @review.user = current_user
     @review.monument = @monument
     authorize @review
     if @review.save
