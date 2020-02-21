@@ -47,16 +47,16 @@ image.delete_at(16)
 anne = User.new(first_name: "Anne", last_name: "Hidalgo", email: "anne@paris.com", phone_number: "06 75 00 07 50", address: "Notre de dame 75000 Paris", password: "123456", password_confirmation: "123456")
 anne.photo.attach(io: URI.open("https://resize-elle.ladmedia.fr/r/625,,forcex/crop/625,804,center-middle,forcex,ffffff/img/var/plain_site/storage/images/people/la-vie-des-people/une-journee-avec/une-journee-avec-anne-hidalgo-2409326/35186746-1-fre-FR/Une-journee-avec-Anne-Hidalgo.jpg"), filename: "hidalgo.png", content_type: 'image/png')
 anne.save!
-ben = User.new(first_name: "Benjamin", last_name: "Netanyahu", email: "benjamin@tel-aviv.com", phone_number: "9726 61 00 061 99", address: "Tayelet, Hayarkon, Tel Aviv", password: "123457", password_confirmation: "123457")
+ben = User.new(first_name: "Benjamin", last_name: "Netanyahu", email: "benjamin@tel-aviv.com", phone_number: "9726 61 00 061 99", address: "Tayelet, Hayarkon, Tel Aviv", password: "123456", password_confirmation: "123456")
 ben.photo.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Benjamin_Netanyahu_2018.jpg/220px-Benjamin_Netanyahu_2018.jpg"), filename: "netanyahu.png", content_type: 'image/png')
 ben.save!
-donald = User.new(first_name: "Donald", last_name: "Trump", email: "donald@washington.com", phone_number: "01 23 45 67 89", address: "Trump Tower, 725 5th Ave, New York, NY 10022", password: "123458", password_confirmation: "123458")
+donald = User.new(first_name: "Donald", last_name: "Trump", email: "donald@washington.com", phone_number: "01 23 45 67 89", address: "Trump Tower, 725 5th Ave, New York, NY 10022", password: "123456", password_confirmation: "123456")
 donald.photo.attach(io: URI.open("https://image.cnbcfm.com/api/v1/image/104681319-GettyImages-837567644.jpg?v=1582143987&w=678&h=381"), filename: "trump.png", content_type: 'image/png')
 donald.save!
-vlad = User.new(first_name: "Vladimir", last_name: "Putin", email: "vladimir@moscow.com", phone_number: "0007 007 007", address: "The Moscow Kremlin, Moscow, Russia, 103073", password: "123459", password_confirmation: "123459")
+vlad = User.new(first_name: "Vladimir", last_name: "Putin", email: "vladimir@moscow.com", phone_number: "0007 007 007", address: "The Moscow Kremlin, Moscow, Russia, 103073", password: "123456", password_confirmation: "123456")
 vlad.photo.attach(io: URI.open("https://d.newsweek.com/en/full/619131/vladimir-putin-russian-president.jpg"), filename: "putin.png", content_type: 'image/png')
 vlad.save!
-grigri = User.new(first_name: "Benjamin", last_name: "Griveaux", email: "grigri@film-maker.com", phone_number: "06 96 96 75 00", address: "Grand Pigalle Hotêl, 29 Rue Victor Massé 75009 Paris", password: "123450", password_confirmation: "123450")
+grigri = User.new(first_name: "Benjamin", last_name: "Griveaux", email: "grigri@film-maker.com", phone_number: "06 96 96 75 00", address: "Grand Pigalle Hotêl, 29 Rue Victor Massé 75009 Paris", password: "123456", password_confirmation: "123456")
 grigri.photo.attach(io: URI.open("https://img-4.linternaute.com/WrLHCs1EOuUr2j2-knhFYQ6D1MU=/1240x/smart/8bf7737a8bfc4e5bbee8742751badfe7/ccmcms-linternaute/13757844.jpg"), filename: "griveaux.png", content_type: 'image/png')
 grigri.save!
 price = (50...500).to_a
@@ -65,7 +65,7 @@ count = 0
 
 monuments.each do |monument|
    priz = price.sample
-   description = "#{monument[0]}is the world's largest historic monument of #{monument[1]}. you can MONURENT this awesome place for the ridiculous price of #{priz} Millions of €. The creator of the sublime #{monument[0]} thanks you."
+   description = "#{monument[0]} is the world's largest historic monument of #{monument[1]}. you can MONURENT this awesome place for the ridiculous price of #{priz} Millions of €. The creator of the sublime #{monument[0]} thanks you."
    mon = Monument.new(name: monument[0], city: monument[1], price: priz, description: description, address: "#{monument[0]}, #{monument[1]}")
    if image[count] != nil
 
