@@ -65,7 +65,7 @@ count = 0
 
 monuments.each do |monument|
    priz = price.sample
-   description = "#{monument[0]}is the world's largest historic monument of #{monument[1]}. you can MONURENT this awesome place for the ridiculous price of #{priz} Millions of €. The creator of the sublime #{monument[0]} thanks you."
+   description = "#{monument[0]} is the world's largest historic monument of #{monument[1]}. you can MONURENT this awesome place for the ridiculous price of #{priz} Millions of €. The creator of the sublime #{monument[0]} thanks you."
    mon = Monument.new(name: monument[0], city: monument[1], price: priz, description: description, address: "#{monument[0]}, #{monument[1]}")
    if image[count] != nil
 
