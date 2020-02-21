@@ -23,12 +23,14 @@
   background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.4));
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
-  text-align: left;
-  height: 20vh;
+  height: 50vh;
   padding-top: 15vh;
   text-align: justify;
+  max-height: 700px;
+  margin: auto;
+  margin-bottom: 40px;
 }
+
 
 .banner-index h1 {
   margin: 0;

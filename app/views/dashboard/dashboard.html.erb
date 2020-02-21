@@ -11,6 +11,8 @@
 
 <div class="tab-content">
   <div id="bookings" class="tab-pane active">
+    <div class="banner-index" style="background-image: url('https://cdn.dribbble.com/users/476275/screenshots/2932195/airplane-drib.png');">
+    </div>
   <div class="container">
     <div class="row">
         <% @bookings.each do |booking| %>
@@ -35,14 +37,27 @@
     </div>
   </div>
   <div id="monument" class="tab-pane">
-    <section class="portfolio-experiment" style="margin-bottom: 35px;">
-      <a href="/monuments/new">
-        <span class="text">WANT TO BE A HOST?</span>
-        <span class="line -right"></span>
-        <span class="line -top"></span>
-        <span class="line -left"></span>
-        <span class="line -bottom"></span>
-      </a>
-    </section>
+    <div class="banner-index" style="background-image: url('https://cdn.dribbble.com/users/1240533/screenshots/5988091/dorsia_prague_4x.jpg');">
+    </div>
+    <div class="container">
+      <div class="row">
+        <% current_user.monuments.each do |monument| %>
+          <div class="col-4" style="padding: 10px;">
+            <div class="card-trip">
+              <% if monument.photos.attached? %>
+                <% monument.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+                <% end %>
+              <% end %>
+              <div class="card-trip-infos">
+                <h2><%= link_to monument.name %></h2>
+                <p><%= monument.city %></p>
+                <p><%= monument.price %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
