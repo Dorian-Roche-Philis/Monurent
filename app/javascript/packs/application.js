@@ -27,6 +27,9 @@ import "bootstrap";
 
 import { initMapbox } from '../plugins/init_mapbox';
 
+import flatpickr from "flatpickr";
+
+
 // Obviously doesn't need to be on window
 window.scrollPosition = {x: 0, y: 0} // Our 'old' scroll position
 window.lastHref = null // Our 'old' page href
@@ -43,6 +46,17 @@ document.addEventListener('turbolinks:load', function () {
     window.scrollTo(window.scrollPosition.x, window.scrollPosition.y)
   }
   initMapbox();
+  flatpickr(".start-flatpickr", {
+    onChange: function(selectedDates, dateStr, instance) {
+      document.querySelector("#booking_start_date").value = dateStr
+    }
+  });
+  flatpickr(".end-flatpickr", {
+    onChange: function(selectedDates, dateStr, instance) {
+      document.querySelector("#booking_end_date").value = dateStr
+    }
+  });
+
 }, false)
 
 
