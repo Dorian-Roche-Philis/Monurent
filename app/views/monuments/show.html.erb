@@ -78,7 +78,7 @@
 
       <h5>Write a review for <%= @monument.name %></h5>
         <%= simple_form_for([@monument, @review], remote: true) do |f| %>
-          <%= f.input :rating, class: "form-control mr-3" %>
+          <%= f.input :rating, collection: 1..5, class: "form-control mr-3" %>
           <%= f.input :content, class: "form-control mr-3" %>
 
           <% if policy(Review).create? %>
@@ -95,7 +95,9 @@
       <% @monument.reviews.order("created_at DESC").each do |review| %>
 
         <div class="review">
-          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+          <% if review.user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "avatar" %>
+          <% end %>
           <div class="review-content">
             <p><small><%= review.created_at %></small></p>
             <p><%= review.rating %></p>
@@ -107,6 +109,8 @@
             <div class="review-actions">
 
                <%= link_to "Delete", review, method: :delete, remote: true %>
+              <i class="far fa-trash-alt">
+                <%= link_to "Delete", review, method: :delete, remote: true %>
               <i class="far fa-trash-alt">
             </div>
           <% end %>
