@@ -1,20 +1,16 @@
-
-  <div class="container-search">
-    <div>
-      <h2>Find a monument, and rent it!</h2>
+  <div class="container-search" style="border-radius: 5px; border: solid #f1f1f1 1px;">
+    <div style="margin-bottom: 25px;">
+      <h2 >Find a monument, and rent it!</h2>
     </div>
+    <div class="center">
       <%= form_tag monuments_path, method: :get do %>
+      <p style="margin-top: 10px;">
       <%= text_field_tag :query,
                         params[:query],
-                        class: "form-control title-form",
                         placeholder: "Rome"
-    %>
-    <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="01/01/2019">
-    <label class="sr-only" for="inlineFormInputName2">Dates</label>
-    <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="01/01/2019">
+    %></p>
     <%= submit_tag "SEARCH", class: "btn btn-form title-form" %>
   <% end %>
-
+    </div>
   </div>
 </div>
-
