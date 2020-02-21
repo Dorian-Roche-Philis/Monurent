@@ -100,7 +100,14 @@
           <% end %>
           <div class="review-content">
             <p><small><%= review.created_at %></small></p>
-            <p><%= review.rating %></p>
+            <p>
+             <% review.rating.to_i.times do  %>
+                <span class="fas fa-star">
+              <% end %>
+              <% (5 - review.rating.to_i).times do  %>
+                <span class="far fa-star">
+              <% end %>
+            </p>
             <p>By: <%= review.user.first_name %> <%= review.user.last_name %></p>
             <p>"<%= review.content %>"</p>
           </div>
@@ -108,10 +115,11 @@
           <% if review.user == current_user %>
             <div class="review-actions">
 
-               <%= link_to "Delete", review, method: :delete, remote: true %>
-              <i class="far fa-trash-alt">
-                <%= link_to "Delete", review, method: :delete, remote: true %>
-              <i class="far fa-trash-alt">
+               <%= link_to review, method: :delete, remote: true, data: {confirm: "Delete review?"} do %>
+                  <i class="far fa-trash-alt">
+                <% end  %>
+
+
             </div>
           <% end %>
 
