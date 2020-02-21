@@ -3,102 +3,143 @@
 
 <div class="container">
 
+
   <div class="center title-form">
     <h1><%= @monument.name.upcase %></h1>
   </div>
-<hr>
-<div class="justify-content">
-  <div class="d-flex flex-row bd-highlight mb-3">
-    <div class="row">
-      <div class="col-8">
-        <div class="row">
-          <div style="margin: 0px">
-            <% if @monument.photos.attached? %>
-              <% @monument.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, height: 280, width: 350, :fetch_format=>:auto, crop: :scale %>
-              <% end %>
-            <% end %>
-          </div>
-            <p><%= @monument.description %></p>
-        </div>
-      </div>
+  <hr>
 
-      <div class="col-4">
-        <div class="container details-monument">
+  <div class="justify-content">
+    <div class="d-flex flex-row bd-highlight mb-3">
+      <div class="row">
+
+        <div class="col-8">
           <div class="row">
-            <div class="col-12">
-
-              <h2>Your dates:</h2>
-              <%= simple_form_for([@monument, @booking]) do |f| %>
-                <div class="row">
-                   <div class="col-6"><%= f.input :start_date, as: :date, html5: true, label: 'From', class: "form-control mr-3" %>
-                   </div>
-                   <div class="col-6"><%= f.input :end_date, as: :date, html5: true, label: 'To', class: "form-control mr-3" %>
-                   </div>
-                </div>
-
-                  <hr>
-                  <p class="center" style="font-weight: 800;">Price per day: $<%= @monument.price %>M</p>
-                  <hr>
-                <% if policy(Booking).create? %>
-                  <div class="center"><%= f.submit 'BOOK NOW', class: 'btn btn-form' %></div>
+            <div style="margin: 0px">
+              <% if @monument.photos.attached? %>
+                <% @monument.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, height: 280, width: 350, :fetch_format=>:auto, crop: :scale %>
                 <% end %>
               <% end %>
             </div>
+             <p><%= @monument.description %></p>
           </div>
+        </div>
+
+        <div class="col-4">
+          <div class="container details-monument">
+
+            <div class="row">
+              <div class="col-12">
+
+              <h2>Your dates:</h2>
+
+                <%= simple_form_for([@monument, @booking]) do |f| %>
+
+                  <div class="row">
+                    <div class="col-6"><%= f.input :start_date, as: :date, html5: true, label: 'From', class: "form-control mr-3" %></div>
+                    <div class="col-6"><%= f.input :end_date, as: :date, html5: true, label: 'To', class: "form-control mr-3" %></div>
+                  </div>
+
+                  <hr>
+
+                  <p class="center" style="font-weight: 800;">Price per day: $<%= @monument.price %>M</p>
+                  <hr>
+
+                  <% if policy(Booking).create? %>
+                    <div class="center"><%= f.submit 'BOOK NOW', class: 'btn btn-form' %></div>
+                  <% end %>
+
+                <% end %>
+
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<hr>
+
+  <hr>
 
 
-<div class="container details-monument">
-  <div class="row">
-    <div class="col-12">
-      <h2><%= @monument.name.capitalize %> Information :</h2>
-      <p class="fas fa-map-marker-alt">   Where : <%= @monument.city %></p>
-      <p>Price : <%= @monument.price %>M/day</p>
-
-
-      <% if @monument.reviews %>
-        <% @monument.reviews.each do |review| %>
-              <h3>Reviews</h3>
-            <div class="review">
-              <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-              <div class="review-content">
-                <p><small><%= review.created_at %></small></p>
-                <p><%= review.rating %></p>
-                <p>By: <%= review.user.first_name %> <%= review.user.last_name %></p>
-                <p>"<%= review.content %>"</p>
-              </div>
-
-              <% if review.user == current_user %>
-                <div class="review-actions">
-                  <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
-                  <a href="#">Delete <i class="far fa-trash-alt"></i></a>
-                </div>
-              <% end %>
-            </div>
-            <% end %>
-
-      <% else %>
-        <p>No reviews yet!</p>
-      <% end %>
-
-
-
-      <div class="center">
-
-
-        <%= link_to("ADD REVIEW", new_monument_review_path(@monument) , class: "btn btn-form") %>
+  <div class="container details-monument">
+    <div class="row">
+      <div class="col-12">
+        <h2><%= @monument.name.capitalize %> Information :</h2>
+        <p class="fas fa-map-marker-alt">   Where : <%= @monument.city %></p>
+        <p>Price : <%= @monument.price %>M/day</p>
       </div>
     </div>
   </div>
-</div>
+
+
+  <div class="container details-monument reviews">
+
+      <h5>Write a review for <%= @monument.name %></h5>
+        <%= simple_form_for([@monument, @review], remote: true) do |f| %>
+          <%= f.input :rating, collection: 1..5, class: "form-control mr-3" %>
+          <%= f.input :content, class: "form-control mr-3" %>
+
+          <% if policy(Review).create? %>
+            <div class="center"><%= f.submit 'Add review', class: 'btn btn-form' %></div>
+        <% end %>
+      <% end %>
+    <% if @monument.reviews.blank? %>
+
+      <p>Be the first to write a review for <%= @monument.name.capitalize %></p>
+
+    <% else %>
+
+
+      <% @monument.reviews.order("created_at DESC").each do |review| %>
+
+        <div class="review">
+          <% if review.user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "avatar" %>
+          <% end %>
+          <div class="review-content">
+            <p><small><%= review.created_at %></small></p>
+            <p>
+             <% review.rating.to_i.times do  %>
+                <span class="fas fa-star">
+              <% end %>
+              <% (5 - review.rating.to_i).times do  %>
+                <span class="far fa-star">
+              <% end %>
+            </p>
+            <p>By: <%= review.user.first_name %> <%= review.user.last_name %></p>
+            <p>"<%= review.content %>"</p>
+          </div>
+
+          <% if review.user == current_user %>
+            <div class="review-actions">
+
+               <%= link_to review, method: :delete, remote: true, data: {confirm: "Delete review?"} do %>
+                  <i class="far fa-trash-alt">
+                <% end  %>
+
+
+            </div>
+          <% end %>
+
+        </div>
+
+
+
+      <% end %>
+
+    <% end %>
+
+
+
+
+
+
 
 
 </div>
+
+
 
 

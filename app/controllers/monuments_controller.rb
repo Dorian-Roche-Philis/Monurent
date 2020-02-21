@@ -42,11 +42,15 @@ class MonumentsController < ApplicationController
   end
 
   def show
+
     @booking = Booking.new
     @review = Review.new
     authorize @monument
+    @review.monument = @monument
+    @review.user = current_user
     authorize @booking
     authorize @review
+
   end
 
   def edit

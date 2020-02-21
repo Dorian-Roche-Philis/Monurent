@@ -1,12 +1,6 @@
 class ReviewsController < ApplicationController
 
-  def new
-    # @monument = Monument.find(params[:monument_id])
-    # @review = Review.new
-    # @review.monument = @monument
-    # @review.user = current_usert
-    # authorize @review
-  end
+
 
   def create
     @review = Review.new(review_params)
@@ -16,10 +10,9 @@ class ReviewsController < ApplicationController
     @review.monument = @monument
     authorize @review
     if @review.save
-
       redirect_to monument_path(@monument)
     else
-      render :new
+      render 'monument/show'
     end
   end
 
@@ -28,11 +21,22 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    @monument = Monument.find(params[:monument_id])
+    @review = Review.find(params[:id])
+    @review.monument = @monument
+    authorize @review
+    authorize @monument
+    @review.update(review_params)
 
+    # no need for app/views/restaurants/update.html.erb
+    redirect_to monument_path
   end
 
   def destroy
-
+    @review = Review.find(params[:id])
+    authorize @review
+    @review.destroy
+    redirect_to monument_path(@review.monument)
   end
 
   def review_params
