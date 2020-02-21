@@ -32,10 +32,8 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 import { initMapbox } from '../plugins/init_mapbox';
-import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 document.addEventListener('turbolinks:load', () => {
-  console.log("initMapBox")
   initMapbox();
 });
 

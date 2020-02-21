@@ -1,24 +1,15 @@
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-const initMapbox = () => {
-  const mapElement = document.getElementById('map');
+const mapElement = document.getElementById('map');
 
-  if (mapElement) { // only build a map if there's a div#map to inject into
-    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
-    });
-    const markers = JSON.parse(mapElement.dataset.markers);
-    fitMapToMarkers(map, markers);
-    addMarkersToMap(map, markers);
-    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }));
-  }
+const buildMap = () => {
+  mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+  return new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/dorian-roche/ck6v9t99p0c7v1ioermajcf6u'
+  });
 };
-
-export { initMapbox };
-
 
 
 const fitMapToMarkers = (map, markers) => {
@@ -47,3 +38,18 @@ const addMarkersToMap = (map, markers) => {
     .addTo(map);
   });
 };
+
+const initMapbox = () => {
+
+  if (mapElement) { // only build a map if there's a div#map to inject into
+
+    const map = buildMap();
+    const markers = JSON.parse(mapElement.dataset.markers);
+    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }));
+    addMarkersToMap(map, markers);
+    fitMapToMarkers(map, markers);
+
+  }
+};
+
+export { initMapbox };

@@ -4,12 +4,14 @@ class MonumentsController < ApplicationController
   before_action :set_monument, only: [:show, :edit, :update, :destroy]
 
   def index
+
     if params[:query].present?
-      @monuments = policy_scope(Monument).where("city ILIKE ?", "%#{params[:query]}%").geocoded
+      sql_query = "city ILIKE :query OR name ILIKE :query"
+      @monuments = policy_scope(Monument).where(sql_query, query: "%#{params[:query]}%").geocoded
     else
       @monuments = policy_scope(Monument).all.geocoded
     end
-    # @flats = Flat.geocoded # returns flats with coordinates
+    # @monuments = monument.geocoded # returns monument with coordinates
 
     @markers = @monuments.map do |monument|
       {
@@ -23,6 +25,8 @@ class MonumentsController < ApplicationController
 
   def new
     @monument = Monument.new
+    @monument.user = current_user
+
     authorize @monument
   end
 
@@ -31,7 +35,7 @@ class MonumentsController < ApplicationController
     @monument.user = current_user
     authorize @monument
     if @monument.save
-      redirect_to monument_path(@monument)
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -39,8 +43,10 @@ class MonumentsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @review = Review.new
     authorize @monument
     authorize @booking
+    authorize @review
   end
 
   def edit
@@ -70,7 +76,7 @@ class MonumentsController < ApplicationController
   end
 
   def monument_params
-    params.require(:monument).permit(:user, :address, :name, :price, :description, :city, :photo)
+    params.require(:monument).permit(:user, :address, :name, :price, :description, :city, photos: [])
   end
 end
 
